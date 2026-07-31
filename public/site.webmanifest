@@ -1,0 +1,21 @@
+{
+  "name": "Triângulo Solutions",
+  "short_name": "Triângulo",
+  "description": "Sistemas, automações e dashboards para empresas em Uberaba/MG.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F0F10",
+  "theme_color": "#D92D32",
+  "icons": [
+    {
+      "src": "/icon-192x192-v4.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512-v4.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

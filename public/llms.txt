@@ -1,0 +1,23 @@
+# Triângulo Solutions
+
+> Empresa de tecnologia em Uberaba/MG: sistemas personalizados, automação de processos, dashboards, software de gestão, MicroSaaS e consultoria para empresas do Triângulo Mineiro.
+
+## Pages
+
+- [Home](/): Soluções digitais para empresas em Uberaba/MG.
+- [Soluções](/solucoes): Visão geral dos serviços oferecidos.
+- [Sobre](/sobre): Quem é a Triângulo Solutions.
+- [Contato](/contato): Fale com a equipe.
+- [Diagnóstico](/diagnostico): Solicite um diagnóstico de processos e tecnologia.
+- [Insights](/insights): Conteúdos sobre tecnologia e gestão.
+- [Casos de uso](/casos-de-uso): Cenários reais atendidos pela Triângulo Solutions.
+- [Política de Privacidade](/politica-de-privacidade): Como tratamos dados em conformidade com a LGPD.
+
+## Serviços
+
+- [Sistemas personalizados](/sistemas-personalizados-uberaba): Sistemas web sob medida em Uberaba/MG.
+- [Automação de processos](/automacao-de-processos-uberaba): Automação de processos empresariais.
+- [Dashboards](/dashboards-indicadores-uberaba): Dashboards e indicadores de gestão.
+- [Software de gestão](/software-gestao-uberaba): Software de gestão sob medida.
+- [MicroSaaS](/microsaas-sob-medida): MicroSaaS sob medida para empresas e produtos.
+- [Consultoria](/consultoria-processos-tecnologia): Consultoria em processos e tecnologia.

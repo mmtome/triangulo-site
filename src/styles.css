@@ -1,0 +1,191 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================================
+   Triângulo Solucions — tokens do Manual da Marca v1.0
+
+   Paleta (seção 08) — cinco cores, e só elas:
+     Vermelho Triângulo  #CE2B34
+     Preto               #0E0E10
+     Grafite             #17171A
+     Cinza               #9A9AA2
+     Branco              #FFFFFF
+
+   Tipografia (seção 09) — Poppins:
+     Bold em títulos · Regular/Light no corpo · Light Italic nos destaques
+
+   O site é escuro por definição: o preto é a base da marca e é o que as
+   referências visuais pedem.
+   ========================================================================== */
+
+@theme inline {
+  --font-sans: "Poppins", system-ui, sans-serif;
+  --font-display: "Poppins", system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-graphite: var(--graphite);
+  --color-graphite-foreground: var(--graphite-foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+
+  /* Cores da marca em hex, para quem precisa do valor exato */
+  --color-brand: #ce2b34;
+  --color-ink: #0e0e10;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Preto #0E0E10 */
+  --background: oklch(0.145 0.004 285);
+  /* Branco #FFFFFF */
+  --foreground: oklch(1 0 0);
+
+  /* Grafite #17171A */
+  --card: oklch(0.175 0.004 285);
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0.175 0.004 285);
+  --popover-foreground: oklch(1 0 0);
+
+  /* Vermelho Triângulo #CE2B34 */
+  --primary: oklch(0.552 0.196 21.5);
+  --primary-foreground: oklch(1 0 0);
+
+  --secondary: oklch(0.205 0.004 285);
+  --secondary-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.205 0.004 285);
+  /* Cinza #9A9AA2 */
+  --muted-foreground: oklch(0.672 0.008 285);
+
+  --accent: oklch(0.235 0.012 20);
+  --accent-foreground: oklch(1 0 0);
+
+  --destructive: oklch(0.552 0.196 21.5);
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.245 0.004 285);
+  --input: oklch(0.245 0.004 285);
+  --ring: oklch(0.552 0.196 21.5);
+
+  --graphite: oklch(0.175 0.004 285);
+  --graphite-foreground: oklch(1 0 0);
+
+  --surface: oklch(0.175 0.004 285);
+  --surface-2: oklch(0.205 0.004 285);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+    background-color: #0e0e10;
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Seção 09 do manual: títulos em Bold */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  /* Destaques em Light Italic — hierarquia do manual */
+  .destaque {
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .bg-grid-dark {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Grão de filme: gradiente vermelho sobre preto banda muito. O ruído quebra
+     as faixas e dá a textura das referências. */
+  .grao::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 300px 300px;
+  }
+
+  .shadow-elegant {
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.04),
+      0 24px 48px -28px rgba(0, 0, 0, 0.85);
+  }
+  .shadow-brand {
+    box-shadow: 0 24px 60px -24px color-mix(in oklab, var(--primary) 55%, transparent);
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

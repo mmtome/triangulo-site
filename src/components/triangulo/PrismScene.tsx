@@ -177,6 +177,8 @@ export function PrismScene({ className = "" }: { className?: string }) {
 
     const onPointerDown = (e: PointerEvent) => {
       if (!comp.interativo) return;
+      // Sem isso, arrastar o prisma seleciona o texto do hero por baixo.
+      e.preventDefault();
       arrastando = true;
       ultimoX = e.clientX;
       ultimoY = e.clientY;
@@ -235,6 +237,8 @@ export function PrismScene({ className = "" }: { className?: string }) {
       host.style.pointerEvents = comp.interativo ? "auto" : "none";
       tela.style.cursor = comp.interativo ? "grab" : "default";
       tela.style.touchAction = "pan-y"; // no toque, o scroll da página vence
+      tela.style.userSelect = "none";
+      tela.style.webkitUserSelect = "none";
     };
     aplicarComposicao();
 

@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check, X } from "lucide-react";
 import { getDiagnosticWhatsAppUrl, getWhatsAppUrl } from "@/lib/site";
 import { PrismScene } from "./PrismScene";
+import Prism from "./Prism";
+import CursorGrid from "./CursorGrid";
 
 /* ============================================================================
    Home da Triângulo Solucions.
@@ -31,6 +33,32 @@ function Etiqueta({ children }: { children: React.ReactNode }) {
   );
 }
 
+/**
+ * Grade que acende sob o cursor, como fundo de seção.
+ * `trackWindow` é obrigatório aqui: o conteúdo fica por cima e, sem isso, a
+ * grade só acenderia nas frestas entre os elementos.
+ */
+function GradeCursor() {
+  return (
+    <div className="pointer-events-none absolute inset-0 z-0 opacity-70 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_88%)]">
+      <CursorGrid
+        cellSize={68}
+        color="#CE2B34"
+        radius={150}
+        falloff="smooth"
+        holdTime={320}
+        fadeDuration={900}
+        lineWidth={1.1}
+        maxOpacity={0.85}
+        gridOpacity={0.03}
+        clickPulse
+        pulseSpeed={620}
+        trackWindow
+      />
+    </div>
+  );
+}
+
 /* -------------------------------------------------------------------------- */
 /* HERO                                                                        */
 /* -------------------------------------------------------------------------- */
@@ -41,6 +69,24 @@ export function Hero() {
       id="inicio"
       className="grao relative isolate min-h-[92vh] overflow-hidden pt-28 sm:pt-32"
     >
+      {/* Fundo: o Prism do React Bits, travado na rampa da marca (ver Prism.tsx).
+          Fica bem no fundo e com opacidade baixa — é atmosfera, não protagonista;
+          quem carrega a cena é o prisma sólido do símbolo, à direita. */}
+      <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.55] [mask-image:linear-gradient(to_bottom,black_0%,black_58%,transparent_96%)]">
+        <Prism
+          animationType="rotate"
+          timeScale={0.34}
+          height={3.5}
+          baseWidth={5.5}
+          scale={3.1}
+          colorFrequency={0.9}
+          noise={0.35}
+          glow={0.85}
+          bloom={1.1}
+          suspendWhenOffscreen
+        />
+      </div>
+
       {/* brilho de horizonte — o elemento das referências, em vermelho da marca */}
       <div
         className="pointer-events-none absolute left-1/2 top-[62%] z-0 h-[1200px] w-[1600px] -translate-x-1/2 rounded-full opacity-90"
@@ -51,8 +97,11 @@ export function Hero() {
       />
       <div className="bg-grid pointer-events-none absolute inset-0 z-0 opacity-70 [mask-image:radial-gradient(ellipse_at_50%_35%,black_20%,transparent_70%)]" />
 
-      {/* cena 3D atrás do texto */}
-      <PrismScene className="pointer-events-none absolute inset-0 z-0" />
+      {/* Cena 3D. No desktop ocupa só a direita e é ali que ela captura o
+          mouse — cobrindo a tela toda, o canvas engoliria os cliques dos
+          botões e a seleção do texto, que ficam à esquerda. Abaixo de lg
+          volta a ser fundo decorativo, sem interação. */}
+      <PrismScene className="pointer-events-none absolute inset-0 z-0 lg:left-auto lg:right-0 lg:w-[58%]" />
 
       {/* Véu atrás do texto: sem ele o prisma passa por baixo das letras e o
           contraste cai abaixo do legível. */}
@@ -270,7 +319,8 @@ const METODO = [
 
 export function Metodo() {
   return (
-    <section id="metodo" className="relative py-24 sm:py-32">
+    <section id="metodo" className="relative isolate overflow-hidden py-24 sm:py-32">
+      <GradeCursor />
       <div
         className="pointer-events-none absolute left-1/2 top-0 z-0 h-[600px] w-[1100px] -translate-x-1/2 opacity-70"
         style={{
@@ -278,7 +328,7 @@ export function Metodo() {
             "radial-gradient(ellipse at 50% 0%, rgba(206,43,52,.14) 0%, rgba(206,43,52,0) 62%)",
         }}
       />
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <Etiqueta>O método</Etiqueta>
           <h2 className="mt-6 text-3xl sm:text-4xl">
@@ -391,8 +441,9 @@ const DIFERENCIAIS = [
 
 export function Diferenciais() {
   return (
-    <section className="py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+    <section className="relative isolate overflow-hidden py-24 sm:py-32">
+      <GradeCursor />
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl">
           <Etiqueta>Por que acreditar</Etiqueta>
           <h2 className="mt-6 text-3xl sm:text-4xl">

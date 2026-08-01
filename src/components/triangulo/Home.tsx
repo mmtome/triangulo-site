@@ -5,7 +5,6 @@ import {
   Braces, Server, GitBranch, Table2, Cpu, PieChart,
   Network, Gauge, Boxes, TerminalSquare, Layers, Activity,
 } from "lucide-react";
-import { useRef, type CSSProperties, type MouseEvent as ReactMouseEvent } from "react";
 import LaserFlow from "./LaserFlow";
 import StickerPeel from "./StickerPeel";
 import TextPressure from "./TextPressure";
@@ -165,15 +164,37 @@ export function Hero() {
           <Etiqueta>Uberaba · Triângulo Mineiro</Etiqueta>
         </motion.div>
 
+        {/* Duas linhas em sequência, e não um TextType só, porque a segunda é
+           vermelha — o componente pinta o texto inteiro de uma cor só. O atraso
+           da segunda cobre a digitação da primeira. */}
         <motion.h1
           initial={{ opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="pointer-events-auto mx-auto mt-7 max-w-4xl text-[2.6rem] leading-[1.04] sm:text-6xl lg:mx-0 lg:max-w-[15ch] lg:text-[4.4rem]"
         >
-          O seu lucro já existe.
-          <br />
-          <span className="text-primary">Ele só está preso.</span>
+          <TextType
+            as="span"
+            text="O seu lucro já existe."
+            className="block"
+            typingSpeed={38}
+            initialDelay={500}
+            loop={false}
+            showCursor={false}
+          />
+          <TextType
+            as="span"
+            text="Ele só está preso."
+            className="block text-primary"
+            typingSpeed={38}
+            initialDelay={1420}
+            loop={false}
+            showCursor
+            hideCursorWhileTyping={false}
+            cursorCharacter="_"
+            cursorClassName="text-primary"
+            cursorBlinkDuration={0.6}
+          />
         </motion.h1>
 
         <motion.p
@@ -435,21 +456,18 @@ const STACK = [
   Network, Gauge, Boxes, TerminalSquare, Layers, Activity,
 ];
 
-function CampoDeStack({ brilhante = false }: { brilhante?: boolean }) {
+function CampoDeStack() {
   return (
     <div
-      className={
-        "grid grid-cols-6 place-items-center gap-y-10 px-6 py-16 sm:grid-cols-9 " +
-        (brilhante ? "h-full w-full" : "absolute inset-0")
-      }
+      className="absolute inset-0 grid grid-cols-6 place-items-center gap-y-10 px-6 py-16 sm:grid-cols-9"
       aria-hidden="true"
     >
       {STACK.concat(STACK).map((Icone, i) => (
         <Icone
           key={i}
-          className={brilhante ? "h-7 w-7 text-white" : "h-7 w-7 text-primary"}
+          className="h-7 w-7 text-primary"
           style={{ opacity: 0.35 + ((i * 37) % 65) / 100 }}
-          strokeWidth={brilhante ? 1.6 : 1.25}
+          strokeWidth={1.25}
         />
       ))}
     </div>
@@ -462,35 +480,8 @@ const LINHA_DE_IMPACTO =
   "linear-gradient(90deg, rgba(206,43,52,0) 0%, rgba(206,43,52,0) 14%, rgba(206,43,52,0.85) 36%, #ffffff 50%, rgba(206,43,52,0.85) 64%, rgba(206,43,52,0) 86%, rgba(206,43,52,0) 100%)";
 
 export function Promessa() {
-  const revelador = useRef<HTMLDivElement>(null);
-
-  /* O exemplo oficial do LaserFlow move uma máscara radial com o ponteiro para
-     "revelar" o conteúdo iluminado pelo feixe. Aqui o revelado é o próprio
-     campo de stack: apagado por padrão, aceso onde o mouse passa. */
-  const moverLuz = (e: ReactMouseEvent<HTMLElement>) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    const el = revelador.current;
-    if (!el) return;
-    el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-    el.style.setProperty("--my", `${e.clientY - r.top}px`);
-  };
-
-  const apagarLuz = () => {
-    const el = revelador.current;
-    if (!el) return;
-    el.style.setProperty("--mx", "-9999px");
-    el.style.setProperty("--my", "-9999px");
-  };
-
-  const mascara =
-    "radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,1) 0px, rgba(255,255,255,0.95) 60px, rgba(255,255,255,0.6) 120px, rgba(255,255,255,0.25) 180px, rgba(255,255,255,0) 240px)";
-
   return (
-    <section
-      className="relative isolate flex min-h-[38rem] items-center overflow-hidden border-t border-white/[0.06] bg-[#0b0b0d] pb-40 pt-28 sm:pb-52 sm:pt-36"
-      onMouseMove={moverLuz}
-      onMouseLeave={apagarLuz}
-    >
+    <section className="relative isolate flex min-h-[38rem] items-center overflow-hidden border-t border-white/[0.06] bg-[#0b0b0d] pb-40 pt-28 sm:pb-52 sm:pt-36">
       {/* Feixe do LaserFlow com os parâmetros do exemplo oficial. O canvas é
          preto opaco (alpha:false no renderer), então entra em screen: preto
          some, o feixe soma. */}
@@ -526,37 +517,22 @@ export function Promessa() {
         <CampoDeStack />
       </div>
 
-      {/* mesma grade, acesa, revelada só sob o ponteiro */}
-      <div
-        ref={revelador}
-        className="pointer-events-none absolute inset-0 z-[2] opacity-70 mix-blend-lighten"
-        aria-hidden="true"
-        style={
-          {
-            "--mx": "-9999px",
-            "--my": "-9999px",
-            WebkitMaskImage: mascara,
-            maskImage: mascara,
-            WebkitMaskRepeat: "no-repeat",
-            maskRepeat: "no-repeat",
-          } as CSSProperties
-        }
-      >
-        <CampoDeStack brilhante />
-      </div>
-
       <div className="relative z-10 mx-auto max-w-4xl px-5 text-center sm:px-8">
-        <motion.blockquote
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-2xl leading-snug sm:text-4xl"
-        >
-          “Nenhuma linha de código antes de entender onde está o seu lucro.
-          <br className="hidden sm:block" /> Todo projeto começa com um
-          diagnóstico e termina em resultado.”
-        </motion.blockquote>
+        {/* Mesma digitação dos títulos de seção. */}
+        <TextType
+          as="blockquote"
+          text="“Nenhuma linha de código antes de entender onde está o seu lucro. Todo projeto começa com um diagnóstico e termina em resultado.”"
+          className="text-2xl font-bold leading-snug tracking-[-0.025em] sm:text-4xl"
+          typingSpeed={26}
+          initialDelay={120}
+          loop={false}
+          startOnVisible
+          showCursor
+          hideCursorWhileTyping={false}
+          cursorCharacter="_"
+          cursorClassName="text-primary"
+          cursorBlinkDuration={0.6}
+        />
         <p className="mt-8 text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
           A promessa da marca
         </p>

@@ -190,6 +190,12 @@ export function PrismScene({ className = "" }: { className?: string }) {
 
     const onPointerDrag = (e: PointerEvent) => {
       if (!arrastando) return;
+      // Cancelar selectstart nem sempre basta — alguns caminhos de entrada
+      // criam a seleção mesmo assim. Limpar a cada quadro do arrasto é o que
+      // funciona em qualquer caso, e não afeta a seleção fora do arrasto.
+      const sel = window.getSelection();
+      if (sel && !sel.isCollapsed) sel.removeAllRanges();
+
       const dx = e.clientX - ultimoX;
       const dy = e.clientY - ultimoY;
       ultimoX = e.clientX;

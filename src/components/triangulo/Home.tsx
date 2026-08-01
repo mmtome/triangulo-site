@@ -659,7 +659,10 @@ export function Credo() {
 
 export function Assinatura() {
   return (
-    <section className="relative isolate overflow-hidden border-t border-white/[0.06] bg-[#0b0b0d] py-24 sm:py-28">
+    <section
+      id="simbolo"
+      className="relative isolate overflow-hidden border-t border-white/[0.06] bg-[#0b0b0d] py-24 sm:py-28"
+    >
       <div className="bg-grid pointer-events-none absolute inset-0 z-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_78%)]" />
 
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2">
@@ -681,8 +684,9 @@ export function Assinatura() {
           </p>
         </div>
 
-        {/* O adesivo é `position: absolute` e usa o pai como limite do arrasto —
-            por isso o contêiner precisa de altura própria e `relative`. */}
+        {/* O adesivo é `position: absolute`, então o contêiner precisa de altura
+            própria e `relative` para ancorá-lo. O limite do arrasto, porém, é a
+            seção inteira: dá para levar o adesivo até em cima do texto. */}
         <div className="relative h-[340px] w-full sm:h-[400px]">
           <StickerPeel
             imageSrc="/simbolo-vermelho.svg"
@@ -693,6 +697,7 @@ export function Assinatura() {
             shadowIntensity={0.55}
             lightingIntensity={0.12}
             initialPosition={{ x: 120, y: 80 }}
+            bounds="#simbolo"
           />
         </div>
       </div>

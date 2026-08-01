@@ -28,6 +28,9 @@ export interface StickerPeelProps {
   shadowIntensity?: number;
   lightingIntensity?: number;
   initialPosition?: "center" | { x: number; y: number };
+  /** Área em que o adesivo pode ser arrastado: seletor CSS ou elemento.
+   *  Sem isto o limite é o elemento-pai, que costuma ser bem menor. */
+  bounds?: string | HTMLElement;
   className?: string;
 }
 
@@ -41,6 +44,7 @@ export default function StickerPeel({
   shadowIntensity = 0.6,
   lightingIntensity = 0.1,
   initialPosition = "center",
+  bounds,
   className = "",
 }: StickerPeelProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -58,11 +62,14 @@ export default function StickerPeel({
   useEffect(() => {
     const target = dragTargetRef.current;
     if (!target?.parentNode) return;
-    const bounds = target.parentNode as HTMLElement;
+
+    const area =
+      (typeof bounds === "string" ? document.querySelector<HTMLElement>(bounds) : bounds) ??
+      (target.parentNode as HTMLElement);
 
     draggableRef.current = Draggable.create(target, {
       type: "x,y",
-      bounds,
+      bounds: area,
       // inertia exigiria o InertiaPlugin (pago) — ver cabeçalho.
       onDrag(this: Draggable) {
         gsap.to(target, {
@@ -85,7 +92,7 @@ export default function StickerPeel({
       window.removeEventListener("orientationchange", onResize);
       draggableRef.current?.kill();
     };
-  }, []);
+  }, [bounds]);
 
   useEffect(() => {
     const container = containerRef.current;

@@ -5,7 +5,7 @@ import {
   Braces, Server, GitBranch, Table2, Cpu, PieChart,
   Network, Gauge, Boxes, TerminalSquare, Layers, Activity,
 } from "lucide-react";
-import LaserFlow from "./LaserFlow";
+import SplashCursor from "./SplashCursor";
 import StickerPeel from "./StickerPeel";
 import TextPressure from "./TextPressure";
 import TextType from "./TextType";
@@ -474,38 +474,23 @@ function CampoDeStack() {
   );
 }
 
-/* Borda que o feixe acende: branca no ponto de impacto, vermelha ao redor,
-   apagando antes das pontas. */
-const LINHA_DE_IMPACTO =
-  "linear-gradient(90deg, rgba(206,43,52,0) 0%, rgba(206,43,52,0) 14%, rgba(206,43,52,0.85) 36%, #ffffff 50%, rgba(206,43,52,0.85) 64%, rgba(206,43,52,0) 86%, rgba(206,43,52,0) 100%)";
-
 export function Promessa() {
   return (
-    <section className="relative isolate flex min-h-[38rem] items-center overflow-hidden border-t border-white/[0.06] bg-[#0b0b0d] pb-40 pt-28 sm:pb-52 sm:pt-36">
-      {/* Feixe do LaserFlow com os parâmetros do exemplo oficial. O canvas é
-         preto opaco (alpha:false no renderer), então entra em screen: preto
-         some, o feixe soma. */}
-      <div className="pointer-events-none absolute inset-0 z-0 mix-blend-screen">
-        <LaserFlow
-          color="#CE2B34"
-          horizontalBeamOffset={0}
-          /* O feixe nasce em uvc.y = 0 e sobe; jogando a origem para −0.42 da
-             altura, o estouro cai exatamente na borda de baixo da seção. */
-          verticalBeamOffset={-0.42}
-          horizontalSizing={0.5}
-          verticalSizing={2}
-          wispDensity={1}
-          wispSpeed={15}
-          wispIntensity={5}
-          flowSpeed={0.35}
-          flowStrength={0.25}
-          fogIntensity={0.45}
-          fogScale={0.3}
-          fogFallSpeed={0.6}
-          decay={1.1}
-          falloffStart={1.2}
-          mouseTiltStrength={0.02}
-          mouseSmoothTime={0.12}
+    <section className="relative isolate flex min-h-[38rem] items-center overflow-hidden border-y border-white/[0.06] bg-[#0b0b0d] py-28 sm:py-36">
+      {/* Fundo: simulação de fluido no vermelho da marca, que reage ao mouse. */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <SplashCursor
+          COLOR="#CE2B34"
+          RAINBOW_MODE={false}
+          DENSITY_DISSIPATION={3.5}
+          VELOCITY_DISSIPATION={2}
+          PRESSURE={0.1}
+          CURL={3}
+          SPLAT_RADIUS={0.2}
+          SPLAT_FORCE={6000}
+          COLOR_UPDATE_SPEED={10}
+          SHADING
+          INTENSITY={0.4}
         />
       </div>
 
@@ -538,23 +523,6 @@ export function Promessa() {
         </p>
       </div>
 
-      {/* A luz cai no limite da seção: a borda de baixo acende no ponto de
-         impacto, com um halo que se acumula ali e escorre para a seção
-         seguinte (o respingo é desenhado lá, porque aqui o overflow corta). */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-40" aria-hidden="true">
-        <div
-          className="absolute -bottom-12 left-1/2 h-32 w-[70%] max-w-4xl -translate-x-1/2 rounded-[100%] blur-2xl"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(206,43,52,0.55) 0%, rgba(206,43,52,0.14) 45%, rgba(206,43,52,0) 72%)",
-          }}
-        />
-        <div className="absolute inset-x-0 bottom-0 h-px" style={{ background: LINHA_DE_IMPACTO }} />
-        <div
-          className="absolute inset-x-0 bottom-0 h-[3px] blur-[4px]"
-          style={{ background: LINHA_DE_IMPACTO }}
-        />
-      </div>
     </section>
   );
 }
@@ -600,15 +568,6 @@ export function Diferenciais() {
   return (
     <section className="relative isolate overflow-hidden py-24 sm:py-32">
       <GradeCursor />
-      {/* respingo da luz que caiu na borda da promessa */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-56"
-        aria-hidden="true"
-        style={{
-          background:
-            "radial-gradient(ellipse 55% 100% at 50% 0%, rgba(206,43,52,0.22) 0%, rgba(206,43,52,0.07) 42%, rgba(206,43,52,0) 76%)",
-        }}
-      />
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl">
           <Etiqueta>Por que acreditar</Etiqueta>

@@ -28,11 +28,13 @@ function TituloDigitado({
     <TextType
       as="h2"
       text={texto}
-      className={className}
+      className={`block ${className}`}
       typingSpeed={26}
       initialDelay={120}
       loop={false}
       startOnVisible
+      /* .text-type é inline-block; sem forçar bloco, o H2 fica na mesma linha
+         da etiqueta que vem antes dele. */
       showCursor
       hideCursorWhileTyping={false}
       cursorCharacter="_"

@@ -1,14 +1,20 @@
-.text-type {
-  display: inline-block;
-  white-space: pre-wrap;
-}
+/* Em @layer components de propósito: assim qualquer utilitário do Tailwind
+   (camada utilities, posterior) vence o display abaixo. Fora de camada, este
+   arquivo ganharia da camada utilities e um `block` na className do título
+   não teria efeito nenhum. */
+@layer components {
+  .text-type {
+    display: inline-block;
+    white-space: pre-wrap;
+  }
 
-.text-type__cursor {
-  margin-left: 0.25rem;
-  display: inline-block;
-  opacity: 1;
-}
+  .text-type__cursor {
+    margin-left: 0.25rem;
+    display: inline-block;
+    opacity: 1;
+  }
 
-.text-type__cursor--hidden {
-  display: none;
+  .text-type__cursor--hidden {
+    display: none;
+  }
 }

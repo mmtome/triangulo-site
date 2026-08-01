@@ -69,8 +69,12 @@ export function Header() {
             transition={{ type: "spring", stiffness: 320, damping: 22 }}
             className="btn-tri hidden text-[13px] sm:inline-grid"
           >
-            <span className="inline-flex items-center gap-2">Solicitar diagnóstico</span>
-            <ArrowRight className="h-4 w-4" />
+            {/* Rótulo e seta no MESMO filho: .btn-tri é inline-grid, então dois
+               filhos viram duas linhas e a seta cai embaixo do texto. */}
+            <span className="inline-flex items-center gap-2">
+              Solicitar diagnóstico
+              <ArrowRight className="h-4 w-4" />
+            </span>
           </motion.a>
           <button
             className="lg:hidden p-2 rounded-md text-foreground"

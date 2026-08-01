@@ -113,8 +113,13 @@ export function Hero() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-5 pb-24 text-center sm:px-8 lg:max-w-7xl lg:text-left">
+      {/* O contêiner é um bloco de largura total e ficaria por cima do canvas,
+          engolindo o arrasto do prisma. Ele não recebe ponteiro; cada filho
+          reativa o seu, então texto continua selecionável e botões clicáveis,
+          mas o espaço vazio à direita deixa o clique passar para a cena 3D. */}
+      <div className="pointer-events-none relative z-10 mx-auto max-w-6xl px-5 pb-24 text-center sm:px-8 lg:max-w-7xl lg:text-left">
         <motion.div
+          className="pointer-events-auto inline-block"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -126,7 +131,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-7 max-w-4xl text-[2.6rem] leading-[1.04] sm:text-6xl lg:mx-0 lg:max-w-[15ch] lg:text-[4.4rem]"
+          className="pointer-events-auto mx-auto mt-7 max-w-4xl text-[2.6rem] leading-[1.04] sm:text-6xl lg:mx-0 lg:max-w-[15ch] lg:text-[4.4rem]"
         >
           O seu lucro já existe.
           <br />
@@ -137,7 +142,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.24 }}
-          className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0 lg:max-w-[46ch]"
+          className="pointer-events-auto mx-auto mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0 lg:max-w-[46ch]"
         >
           Ele está travado em processo manual, retrabalho e gargalo — e some todo
           mês sem você ver. A gente destrava com a solução digital certa.{" "}
@@ -150,7 +155,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.36 }}
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
+          className="pointer-events-auto mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
         >
           <a
             href={getDiagnosticWhatsAppUrl()}
@@ -173,7 +178,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mt-14 text-[11px] font-semibold uppercase tracking-[0.34em] text-muted-foreground"
+          className="pointer-events-auto mt-14 inline-block text-[11px] font-semibold uppercase tracking-[0.34em] text-muted-foreground"
         >
           Mapear · Resolver · Lucrar
         </motion.p>

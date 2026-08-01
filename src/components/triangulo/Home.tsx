@@ -268,7 +268,7 @@ const CONTRASTE = [
 
 export function Contraste() {
   return (
-    <section className="relative border-y border-white/[0.06] bg-[#0b0b0d] py-24 sm:py-28">
+    <section className="relative bg-[#0b0b0d] py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <motion.div
           variants={escalonar}
@@ -471,7 +471,7 @@ function CampoDeStack() {
 
 export function Promessa() {
   return (
-    <section className="relative isolate flex min-h-[38rem] items-center overflow-hidden border-y border-white/[0.06] bg-[#0b0b0d] py-28 sm:py-36">
+    <section className="relative isolate flex min-h-[38rem] items-center overflow-hidden bg-[#0b0b0d] py-28 sm:py-36">
       {/* Fundo: simulação de fluido no vermelho da marca, que reage ao mouse. */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <SplashCursor
@@ -607,7 +607,7 @@ const CREDO = [
 
 export function Credo() {
   return (
-    <section className="grao relative overflow-hidden border-y border-white/[0.06] bg-[#0b0b0d] py-24 sm:py-32">
+    <section className="grao relative overflow-hidden bg-[#0b0b0d] py-24 sm:py-32">
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[900px] w-[1400px] -translate-x-1/2 -translate-y-1/2"
         style={{
@@ -661,7 +661,7 @@ export function Assinatura() {
   return (
     <section
       id="simbolo"
-      className="relative isolate overflow-hidden border-t border-white/[0.06] bg-[#0b0b0d] py-24 sm:py-28"
+      className="relative isolate overflow-hidden bg-[#0b0b0d] py-24 sm:py-28"
     >
       <div className="bg-grid pointer-events-none absolute inset-0 z-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_78%)]" />
 
@@ -706,8 +706,8 @@ export function Assinatura() {
 }
 
 export function ChamadaFinal() {
+  // Fundo preto puro: nada de brilho atrás do fechamento.
   return (
-    {/* Fundo preto puro: nada de brilho atrás do fechamento. */}
     <section className="relative overflow-hidden bg-[#0e0e10] py-28 sm:py-36">
       <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
         {/* TextPressure exige fonte variável; a Poppins não tem versão

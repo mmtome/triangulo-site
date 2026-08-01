@@ -1,9 +1,46 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Check, X } from "lucide-react";
+import {
+  ArrowRight, Check, X,
+  LayoutDashboard, BarChart3, Database, Code2, Workflow, LineChart,
+  Braces, Server, GitBranch, Table2, Cpu, PieChart,
+  Network, Gauge, Boxes, TerminalSquare, Layers, Activity,
+} from "lucide-react";
+import LaserFlow from "./LaserFlow";
+import StickerPeel from "./StickerPeel";
+import TextPressure from "./TextPressure";
+import TextType from "./TextType";
+
 import { getDiagnosticWhatsAppUrl, getWhatsAppUrl } from "@/lib/site";
 import { PrismScene } from "./PrismScene";
 import Prism from "./Prism";
 import CursorGrid from "./CursorGrid";
+
+/** Título de seção com digitação. `loop={false}` de propósito: um H2 que se
+ *  apaga e reescreve em laço deixa a página ilegível enquanto se lê. */
+function TituloDigitado({
+  texto,
+  className = "",
+}: {
+  texto: string;
+  className?: string;
+}) {
+  return (
+    <TextType
+      as="h2"
+      text={texto}
+      className={className}
+      typingSpeed={26}
+      initialDelay={120}
+      loop={false}
+      startOnVisible
+      showCursor
+      hideCursorWhileTyping={false}
+      cursorCharacter="_"
+      cursorClassName="text-primary"
+      cursorBlinkDuration={0.6}
+    />
+  );
+}
 
 /* ============================================================================
    Home da Triângulo Solucions.
@@ -161,14 +198,16 @@ export function Hero() {
             href={getDiagnosticWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="shadow-brand group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
+            className="btn-tri group text-sm"
           >
-            Solicitar diagnóstico
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            <span className="inline-flex items-center gap-2">
+              Solicitar diagnóstico
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </span>
           </a>
           <a
             href="#metodo"
-            className="inline-flex items-center justify-center rounded-full border border-white/12 px-7 py-3.5 text-sm font-semibold text-foreground transition hover:border-white/25 hover:bg-white/[0.04]"
+            className="btn-tri btn-tri-sec text-sm"
           >
             Como funciona
           </a>
@@ -224,11 +263,12 @@ export function Contraste() {
           <motion.div variants={surgir}>
             <Etiqueta>O contraste</Etiqueta>
           </motion.div>
-          <motion.h2 variants={surgir} className="mt-6 text-3xl sm:text-4xl">
-            O mercado te vende a solução
-            <br />
-            antes de entender o seu problema.
-          </motion.h2>
+          <motion.div variants={surgir}>
+            <TituloDigitado
+              texto="O mercado te vende a solução antes de entender o seu problema."
+              className="mt-6 text-3xl leading-snug sm:text-4xl"
+            />
+          </motion.div>
           <motion.p
             variants={surgir}
             className="mx-auto mt-5 max-w-xl text-muted-foreground"
@@ -336,9 +376,7 @@ export function Metodo() {
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <Etiqueta>O método</Etiqueta>
-          <h2 className="mt-6 text-3xl sm:text-4xl">
-            Três vértices. Nessa ordem.
-          </h2>
+          <TituloDigitado texto="Três vértices. Nessa ordem." className="mt-6 text-3xl sm:text-4xl" />
           <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
             É o raciocínio da engenharia de produção aplicado ao digital: mapear,
             medir, otimizar.
@@ -384,10 +422,59 @@ export function Metodo() {
 /* PROMESSA                                                                    */
 /* -------------------------------------------------------------------------- */
 
+/* Campo de ícones de stack atrás da promessa.
+   Deliberadamente genéricos, não as marcas de Meta / Google Ads / Analytics /
+   Java: recolorir marcas de terceiros viola as diretrizes delas (Google e Meta
+   proíbem por escrito) e exibi-las no site sugere parceria. Se a Triângulo for
+   parceira oficial de alguma, o certo é uma faixa de "integrações" com os
+   logos nas cores originais — não como textura de fundo. */
+const STACK = [
+  LayoutDashboard, BarChart3, Database, Code2, Workflow, LineChart,
+  Braces, Server, GitBranch, Table2, Cpu, PieChart,
+  Network, Gauge, Boxes, TerminalSquare, Layers, Activity,
+];
+
+function CampoDeStack() {
+  return (
+    <div
+      className="pointer-events-none absolute inset-0 z-0 grid grid-cols-6 place-items-center gap-y-10 px-6 py-16 opacity-[0.13] [mask-image:radial-gradient(ellipse_at_center,transparent_18%,black_58%,transparent_92%)] sm:grid-cols-9"
+      aria-hidden="true"
+    >
+      {STACK.concat(STACK).map((Icone, i) => (
+        <Icone
+          key={i}
+          className="h-7 w-7 text-primary"
+          style={{ opacity: 0.35 + ((i * 37) % 65) / 100 }}
+          strokeWidth={1.25}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function Promessa() {
   return (
-    <section className="relative border-y border-white/[0.06] bg-[#0b0b0d] py-24">
-      <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
+    <section className="relative isolate overflow-hidden border-y border-white/[0.06] bg-[#0b0b0d] py-24">
+      {/* feixe do LaserFlow, no vermelho da marca */}
+      <div className="pointer-events-none absolute inset-0 z-0 opacity-80 mix-blend-screen">
+        <LaserFlow
+          color="#CE2B34"
+          horizontalBeamOffset={0}
+          verticalBeamOffset={-0.18}
+          verticalSizing={1.6}
+          horizontalSizing={0.42}
+          fogIntensity={0.38}
+          wispIntensity={4}
+          wispDensity={0.8}
+          flowSpeed={0.3}
+          mouseTiltStrength={0.02}
+          mouseSmoothTime={0.18}
+        />
+      </div>
+
+      <CampoDeStack />
+
+      <div className="relative z-10 mx-auto max-w-4xl px-5 text-center sm:px-8">
         <motion.blockquote
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -451,9 +538,7 @@ export function Diferenciais() {
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl">
           <Etiqueta>Por que acreditar</Etiqueta>
-          <h2 className="mt-6 text-3xl sm:text-4xl">
-            O que sustenta a promessa.
-          </h2>
+          <TituloDigitado texto="O que sustenta a promessa." className="mt-6 text-3xl sm:text-4xl" />
         </div>
 
         <motion.div
@@ -540,6 +625,53 @@ export function Credo() {
 /* CTA FINAL                                                                   */
 /* -------------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------------- */
+/* ASSINATURA — o símbolo como adesivo, logo antes do rodapé                   */
+/* -------------------------------------------------------------------------- */
+
+export function Assinatura() {
+  return (
+    <section className="relative isolate overflow-hidden border-t border-white/[0.06] bg-[#0b0b0d] py-24 sm:py-28">
+      <div className="bg-grid pointer-events-none absolute inset-0 z-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_78%)]" />
+
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2">
+        <div>
+          <Etiqueta>O símbolo</Etiqueta>
+          <h2 className="mt-6 text-3xl leading-snug sm:text-4xl">
+            Duas formas que se encaixam:
+            <br />
+            <span className="text-primary">
+              o problema encontra a solução.
+            </span>
+          </h2>
+          <p className="mt-5 max-w-md text-muted-foreground">
+            A diagonal ascendente traduz eficiência e crescimento — o lucro
+            subindo. A geometria isométrica é herança do olhar de engenharia.
+          </p>
+          <p className="destaque mt-6 text-sm text-muted-foreground">
+            Pode descolar e arrastar. À vontade.
+          </p>
+        </div>
+
+        {/* O adesivo é `position: absolute` e usa o pai como limite do arrasto —
+            por isso o contêiner precisa de altura própria e `relative`. */}
+        <div className="relative h-[340px] w-full sm:h-[400px]">
+          <StickerPeel
+            imageSrc="/simbolo-vermelho.svg"
+            width={190}
+            rotate={-8}
+            peelBackHoverPct={22}
+            peelBackActivePct={40}
+            shadowIntensity={0.55}
+            lightingIntensity={0.12}
+            initialPosition={{ x: 120, y: 80 }}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function ChamadaFinal() {
   return (
     <section className="relative overflow-hidden py-28 sm:py-36">
@@ -551,17 +683,23 @@ export function ChamadaFinal() {
         }}
       />
       <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
-        <motion.h2
+        {/* TextPressure exige fonte variável; a Poppins não tem versão
+            variável, então aqui a família é a Outfit — ver TextPressure.tsx. */}
+        <motion.div
           initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="text-4xl leading-[1.06] sm:text-6xl"
+          className="mx-auto w-full max-w-2xl"
         >
-          Destrave o lucro
-          <br />
-          <span className="text-primary">que já é seu.</span>
-        </motion.h2>
+          <h2 className="sr-only">Destrave o lucro que já é seu.</h2>
+          <div aria-hidden="true" className="h-[4.4rem] sm:h-[6.2rem]">
+            <TextPressure text="Destrave o lucro" textColor="#FFFFFF" minFontSize={34} />
+          </div>
+          <div aria-hidden="true" className="h-[4.4rem] sm:h-[6.2rem]">
+            <TextPressure text="que já é seu." textColor="#CE2B34" minFontSize={34} />
+          </div>
+        </motion.div>
 
         <p className="mx-auto mt-7 max-w-lg text-muted-foreground">
           Comece pelo Mapa: uma sessão de diagnóstico do seu processo, com os
@@ -573,16 +711,18 @@ export function ChamadaFinal() {
             href={getDiagnosticWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="shadow-brand group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
+            className="btn-tri group text-sm"
           >
-            Solicitar diagnóstico
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            <span className="inline-flex items-center gap-2">
+              Solicitar diagnóstico
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </span>
           </a>
           <a
             href={getWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full border border-white/12 px-8 py-4 text-sm font-semibold text-foreground transition hover:border-white/25 hover:bg-white/[0.04]"
+            className="btn-tri btn-tri-sec text-sm"
           >
             Conversar sobre o meu caso
           </a>

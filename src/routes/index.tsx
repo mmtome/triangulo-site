@@ -8,6 +8,7 @@ import {
   Promessa,
   Diferenciais,
   Credo,
+  Assinatura,
   ChamadaFinal,
 } from "@/components/triangulo/Home";
 import { CookieBanner } from "@/components/triangulo/CookieBanner";
@@ -80,6 +81,7 @@ function Index() {
         <Diferenciais />
         <Credo />
         <ChamadaFinal />
+        <Assinatura />
       </main>
       <InstagramFeed />
       <Footer />

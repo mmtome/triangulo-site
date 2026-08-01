@@ -189,3 +189,119 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+@layer utilities {
+  /* Texto só para leitor de tela — usado pelo TextType para entregar o título
+     completo mesmo antes da animação terminar. */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+@layer components {
+  /* ==========================================================================
+     Botão com borda animada e cantos chanfrados.
+
+     O CSS original usava um gradiente laranja → roxo → ciano. Nenhuma dessas
+     cores existe na paleta do Manual da Marca, e a seção 07 proíbe alterar as
+     cores da identidade — então a borda anima entre vermelho Triângulo e
+     branco, que é o mesmo movimento dentro da paleta.
+     ========================================================================== */
+  .btn-tri {
+    --border-color: linear-gradient(-45deg, #ce2b34, #ffffff, #ce2b34);
+    --border-width: 0.115em;
+    --curve-size: 0.6em;
+    --bg: #0e0e10;
+    --color: #ffffff;
+
+    position: relative;
+    isolation: isolate;
+    display: inline-grid;
+    place-content: center;
+    color: var(--color);
+    cursor: pointer;
+    border: 0;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.95em 2em;
+    box-shadow: 0 18px 40px -22px rgba(206, 43, 52, 0.75);
+    clip-path: polygon(
+      0% var(--curve-size),
+      var(--curve-size) 0,
+      100% 0,
+      100% calc(100% - var(--curve-size)),
+      calc(100% - var(--curve-size)) 100%,
+      0 100%
+    );
+    transition: color 250ms;
+  }
+
+  .btn-tri::before,
+  .btn-tri::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .btn-tri::before {
+    background: var(--border-color);
+    background-size: 300% 300%;
+    animation: btn-tri-bg 5s ease infinite;
+    z-index: -2;
+  }
+
+  @keyframes btn-tri-bg {
+    0% { background-position: 31% 0%; }
+    50% { background-position: 70% 100%; }
+    100% { background-position: 31% 0%; }
+  }
+
+  .btn-tri::after {
+    background: var(--bg);
+    z-index: -1;
+    clip-path: polygon(
+      var(--border-width) calc(var(--curve-size) + var(--border-width) * 0.5),
+      calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+      calc(100% - var(--border-width)) var(--border-width),
+      calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+      var(--border-width) calc(100% - var(--border-width))
+    );
+    transition: clip-path 500ms;
+  }
+
+  /* No hover o preenchimento recolhe e a borda toma o botão inteiro. */
+  .btn-tri:where(:hover, :focus-visible)::after {
+    clip-path: polygon(
+      calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      calc(100% - var(--border-width)) var(--border-width),
+      calc(100% - var(--border-width)) var(--border-width),
+      calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width))
+    );
+    transition: 200ms;
+  }
+
+  .btn-tri:where(:hover, :focus-visible) {
+    color: #fff;
+  }
+
+  /* Variante secundária: mesma silhueta, borda só cinza — não compete com o CTA. */
+  .btn-tri-sec {
+    --border-color: linear-gradient(-45deg, #2e2e34, #9a9aa2, #2e2e34);
+    box-shadow: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-tri::before { animation: none; }
+  }
+}

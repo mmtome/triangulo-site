@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AnalyticsLoader } from "@/components/triangulo/AnalyticsLoader";
+import GradualBlur from "@/components/triangulo/GradualBlur";
 
 function NotFoundComponent() {
   return (
@@ -126,12 +127,47 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+/**
+ * Desfoque de borda em todo o site. Fica no root para valer em qualquer rota.
+ *
+ * zIndex −60 vira 40 no componente (target="page" soma 100). É proposital: o
+ * Header é z-50 e o banner de cookies z-60 — acima disso o desfoque borraria a
+ * própria navegação. Só nas bordas: backdrop-filter é caro e empilhá-lo em
+ * cada seção derruba o scroll.
+ */
+function DesfoqueDeBorda() {
+  return (
+    <>
+      <GradualBlur
+        target="page"
+        position="top"
+        height="5rem"
+        strength={1.4}
+        divCount={4}
+        curve="bezier"
+        zIndex={-60}
+      />
+      <GradualBlur
+        target="page"
+        position="bottom"
+        height="7rem"
+        strength={2}
+        divCount={4}
+        curve="bezier"
+        exponential
+        zIndex={-60}
+      />
+    </>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <DesfoqueDeBorda />
       <AnalyticsLoader />
     </QueryClientProvider>
   );

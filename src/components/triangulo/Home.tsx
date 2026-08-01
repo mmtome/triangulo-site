@@ -707,14 +707,8 @@ export function Assinatura() {
 
 export function ChamadaFinal() {
   return (
-    <section className="relative overflow-hidden py-28 sm:py-36">
-      <div
-        className="pointer-events-none absolute left-1/2 top-full z-0 h-[1100px] w-[1500px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 0%, rgba(206,43,52,.26) 0%, rgba(206,43,52,.08) 24%, rgba(206,43,52,0) 52%)",
-        }}
-      />
+    {/* Fundo preto puro: nada de brilho atrás do fechamento. */}
+    <section className="relative overflow-hidden bg-[#0e0e10] py-28 sm:py-36">
       <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
         {/* TextPressure exige fonte variável; a Poppins não tem versão
             variável, então aqui a família é a Outfit — ver TextPressure.tsx. */}

@@ -216,6 +216,14 @@ export function PrismScene({ className = "" }: { className?: string }) {
       alvoDesvioY = 0;
     };
 
+    // preventDefault no pointerdown não impede a seleção: quem a inicia é o
+    // mousedown de compatibilidade. Bloquear selectstart enquanto arrasta é o
+    // que funciona, e só durante o arrasto — o texto continua selecionável.
+    const bloquearSelecao = (e: Event) => {
+      if (arrastando) e.preventDefault();
+    };
+    document.addEventListener("selectstart", bloquearSelecao);
+
     tela.addEventListener("pointerdown", onPointerDown);
     tela.addEventListener("pointermove", onPointerDrag);
     tela.addEventListener("pointerup", soltar);
@@ -316,6 +324,7 @@ export function PrismScene({ className = "" }: { className?: string }) {
       cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("pointermove", onPointerMoveGlobal);
+      document.removeEventListener("selectstart", bloquearSelecao);
       tela.removeEventListener("pointerdown", onPointerDown);
       tela.removeEventListener("pointermove", onPointerDrag);
       tela.removeEventListener("pointerup", soltar);

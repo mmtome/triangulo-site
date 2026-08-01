@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { motion } from "framer-motion";
-import { Instagram, ArrowUpRight, Play } from "lucide-react";
+import { Instagram, ArrowUpRight, Play, Copy } from "lucide-react";
 import { getInstagramFeed } from "@/lib/instagram.functions";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/site";
 import { trackEvent } from "@/lib/analytics";
@@ -18,7 +18,7 @@ export function InstagramFeed() {
   const posts = data?.posts ?? [];
 
   return (
-    <section className="border-t border-border bg-surface">
+    <section className="bg-[#0b0b0d]">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 py-16 sm:py-20">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -47,8 +47,9 @@ export function InstagramFeed() {
         </motion.div>
 
         {posts.length > 0 ? (
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
-            {posts.slice(0, 12).map((post, i) => (
+          /* 5 colunas × 3 linhas, como na referência. */
+          <div className="mt-10 grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-3 lg:grid-cols-5">
+            {posts.slice(0, 15).map((post, i) => (
               <motion.a
                 key={post.id}
                 href={post.permalink}
@@ -76,6 +77,11 @@ export function InstagramFeed() {
                 {post.mediaType === "VIDEO" && (
                   <span className="absolute right-2 top-2 rounded-full bg-graphite/70 p-1">
                     <Play className="h-3 w-3 text-graphite-foreground" />
+                  </span>
+                )}
+                {post.mediaType === "CAROUSEL_ALBUM" && (
+                  <span className="absolute right-2 top-2 rounded-full bg-graphite/70 p-1">
+                    <Copy className="h-3 w-3 text-graphite-foreground" />
                   </span>
                 )}
               </motion.a>

@@ -12,7 +12,7 @@ import TextType from "./TextType";
 
 import { getDiagnosticWhatsAppUrl, getWhatsAppUrl } from "@/lib/site";
 import { PrismScene } from "./PrismScene";
-import Prism from "./Prism";
+import SideRays from "./SideRays";
 import CursorGrid from "./CursorGrid";
 
 /** Título de seção com digitação. `loop={false}` de propósito: um H2 que se
@@ -106,32 +106,25 @@ export function Hero() {
       id="inicio"
       className="grao relative isolate min-h-[92vh] overflow-hidden pt-28 sm:pt-32"
     >
-      {/* Fundo: o Prism do React Bits, travado na rampa da marca (ver Prism.tsx).
-          Fica bem no fundo e com opacidade baixa — é atmosfera, não protagonista;
-          quem carrega a cena é o prisma sólido do símbolo, à direita. */}
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.55] [mask-image:linear-gradient(to_bottom,black_0%,black_58%,transparent_96%)]">
-        <Prism
-          animationType="rotate"
-          timeScale={0.34}
-          height={3.5}
-          baseWidth={5.5}
-          scale={3.1}
-          colorFrequency={0.9}
-          noise={0.35}
-          glow={0.85}
-          bloom={1.1}
-          suspendWhenOffscreen
+      {/* Fundo: só o leque de raios, vindo do alto à direita — é de lá que
+          vem a luz que atinge o prisma sólido do símbolo. As duas camadas de
+          raio ficam no vermelho da marca e no branco; nada fora da paleta. */}
+      <div className="pointer-events-none absolute inset-0 z-0 [mask-image:linear-gradient(to_bottom,black_0%,black_62%,transparent_98%)]">
+        <SideRays
+          speed={2.2}
+          rayColor1="#CE2B34"
+          rayColor2="#FFFFFF"
+          intensity={2}
+          spread={2}
+          origin="top-right"
+          tilt={0}
+          saturation={1.4}
+          blend={0.3}
+          falloff={1.6}
+          opacity={0.9}
         />
       </div>
 
-      {/* brilho de horizonte — o elemento das referências, em vermelho da marca */}
-      <div
-        className="pointer-events-none absolute left-1/2 top-[62%] z-0 h-[1200px] w-[1600px] -translate-x-1/2 rounded-full opacity-90"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 0%, rgba(206,43,52,.30) 0%, rgba(206,43,52,.11) 18%, rgba(206,43,52,.03) 34%, rgba(206,43,52,0) 55%)",
-        }}
-      />
       <div className="bg-grid pointer-events-none absolute inset-0 z-0 opacity-70 [mask-image:radial-gradient(ellipse_at_50%_35%,black_20%,transparent_70%)]" />
 
       {/* Cena 3D. No desktop ocupa só a direita e é ali que ela captura o

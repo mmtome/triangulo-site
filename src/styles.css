@@ -216,7 +216,14 @@
      branco, que é o mesmo movimento dentro da paleta.
      ========================================================================== */
   .btn-tri {
-    --border-color: linear-gradient(-45deg, #ce2b34, #ffffff, #ce2b34);
+    --border-color: linear-gradient(
+      -45deg,
+      #ce2b34 0%,
+      #ce2b34 40%,
+      #ffffff 50%,
+      #ce2b34 60%,
+      #ce2b34 100%
+    );
     --border-width: 0.115em;
     --curve-size: 0.6em;
     --bg: #ce2b34;
@@ -278,11 +285,20 @@
     transition: clip-path 500ms;
   }
 
-  /* O hover original recolhia o preenchimento e deixava o gradiente tomar o
-     botão — como ele passa pelo branco, o botão ficava rosa. Aqui o
-     preenchimento fica: só clareia, e a borda segue animando. */
+  /* No hover o preenchimento recolhe e o gradiente toma o botão — é o efeito
+     do CSS original. Ele só funcionava mal porque o branco ocupava metade da
+     escala e o botão saía rosa; com a faixa estreita, continua vermelho com
+     um reflexo atravessando. */
   .btn-tri:where(:hover, :focus-visible)::after {
-    filter: brightness(1.14);
+    clip-path: polygon(
+      calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      calc(100% - var(--border-width)) var(--border-width),
+      calc(100% - var(--border-width)) var(--border-width),
+      calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width))
+    );
+    transition: 200ms;
   }
 
   .btn-tri:where(:hover, :focus-visible) {
@@ -290,6 +306,18 @@
   }
 
   /* Variante secundária: mesma silhueta, borda só cinza — não compete com o CTA. */
+  .btn-tri-sec:where(:hover, :focus-visible)::after {
+    clip-path: polygon(
+      var(--border-width) calc(var(--curve-size) + var(--border-width) * 0.5),
+      calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+      calc(100% - var(--border-width)) var(--border-width),
+      calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+      var(--border-width) calc(100% - var(--border-width))
+    );
+    filter: brightness(1.6);
+  }
+
   .btn-tri-sec {
     --border-color: linear-gradient(-45deg, #2e2e34, #9a9aa2, #2e2e34);
     --bg: #0e0e10;

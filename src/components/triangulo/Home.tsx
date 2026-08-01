@@ -5,6 +5,7 @@ import {
   Braces, Server, GitBranch, Table2, Cpu, PieChart,
   Network, Gauge, Boxes, TerminalSquare, Layers, Activity,
 } from "lucide-react";
+import { useRef, type CSSProperties, type MouseEvent as ReactMouseEvent } from "react";
 import LaserFlow from "./LaserFlow";
 import StickerPeel from "./StickerPeel";
 import TextPressure from "./TextPressure";
@@ -434,18 +435,21 @@ const STACK = [
   Network, Gauge, Boxes, TerminalSquare, Layers, Activity,
 ];
 
-function CampoDeStack() {
+function CampoDeStack({ brilhante = false }: { brilhante?: boolean }) {
   return (
     <div
-      className="pointer-events-none absolute inset-0 z-0 grid grid-cols-6 place-items-center gap-y-10 px-6 py-16 opacity-[0.13] [mask-image:radial-gradient(ellipse_at_center,transparent_18%,black_58%,transparent_92%)] sm:grid-cols-9"
+      className={
+        "grid grid-cols-6 place-items-center gap-y-10 px-6 py-16 sm:grid-cols-9 " +
+        (brilhante ? "h-full w-full" : "absolute inset-0")
+      }
       aria-hidden="true"
     >
       {STACK.concat(STACK).map((Icone, i) => (
         <Icone
           key={i}
-          className="h-7 w-7 text-primary"
+          className={brilhante ? "h-7 w-7 text-white" : "h-7 w-7 text-primary"}
           style={{ opacity: 0.35 + ((i * 37) % 65) / 100 }}
-          strokeWidth={1.25}
+          strokeWidth={brilhante ? 1.6 : 1.25}
         />
       ))}
     </div>
@@ -453,26 +457,86 @@ function CampoDeStack() {
 }
 
 export function Promessa() {
+  const revelador = useRef<HTMLDivElement>(null);
+
+  /* O exemplo oficial do LaserFlow move uma máscara radial com o ponteiro para
+     "revelar" o conteúdo iluminado pelo feixe. Aqui o revelado é o próprio
+     campo de stack: apagado por padrão, aceso onde o mouse passa. */
+  const moverLuz = (e: ReactMouseEvent<HTMLElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    const el = revelador.current;
+    if (!el) return;
+    el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    el.style.setProperty("--my", `${e.clientY - r.top}px`);
+  };
+
+  const apagarLuz = () => {
+    const el = revelador.current;
+    if (!el) return;
+    el.style.setProperty("--mx", "-9999px");
+    el.style.setProperty("--my", "-9999px");
+  };
+
+  const mascara =
+    "radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,1) 0px, rgba(255,255,255,0.95) 60px, rgba(255,255,255,0.6) 120px, rgba(255,255,255,0.25) 180px, rgba(255,255,255,0) 240px)";
+
   return (
-    <section className="relative isolate overflow-hidden border-y border-white/[0.06] bg-[#0b0b0d] py-24">
-      {/* feixe do LaserFlow, no vermelho da marca */}
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-80 mix-blend-screen">
+    <section
+      className="relative isolate flex min-h-[38rem] items-center overflow-hidden border-y border-white/[0.06] bg-[#0b0b0d] py-28 sm:py-36"
+      onMouseMove={moverLuz}
+      onMouseLeave={apagarLuz}
+    >
+      {/* Feixe do LaserFlow com os parâmetros do exemplo oficial. O canvas é
+         preto opaco (alpha:false no renderer), então entra em screen: preto
+         some, o feixe soma. */}
+      <div className="pointer-events-none absolute inset-0 z-0 mix-blend-screen">
         <LaserFlow
           color="#CE2B34"
           horizontalBeamOffset={0}
-          verticalBeamOffset={-0.18}
-          verticalSizing={1.6}
-          horizontalSizing={0.42}
-          fogIntensity={0.38}
-          wispIntensity={4}
-          wispDensity={0.8}
-          flowSpeed={0.3}
+          verticalBeamOffset={0}
+          horizontalSizing={0.5}
+          verticalSizing={2}
+          wispDensity={1}
+          wispSpeed={15}
+          wispIntensity={5}
+          flowSpeed={0.35}
+          flowStrength={0.25}
+          fogIntensity={0.45}
+          fogScale={0.3}
+          fogFallSpeed={0.6}
+          decay={1.1}
+          falloffStart={1.2}
           mouseTiltStrength={0.02}
-          mouseSmoothTime={0.18}
+          mouseSmoothTime={0.12}
         />
       </div>
 
-      <CampoDeStack />
+      {/* base apagada */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] opacity-[0.11] [mask-image:radial-gradient(ellipse_at_center,transparent_18%,black_58%,transparent_92%)]"
+        aria-hidden="true"
+      >
+        <CampoDeStack />
+      </div>
+
+      {/* mesma grade, acesa, revelada só sob o ponteiro */}
+      <div
+        ref={revelador}
+        className="pointer-events-none absolute inset-0 z-[2] opacity-70 mix-blend-lighten"
+        aria-hidden="true"
+        style={
+          {
+            "--mx": "-9999px",
+            "--my": "-9999px",
+            WebkitMaskImage: mascara,
+            maskImage: mascara,
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+          } as CSSProperties
+        }
+      >
+        <CampoDeStack brilhante />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-4xl px-5 text-center sm:px-8">
         <motion.blockquote

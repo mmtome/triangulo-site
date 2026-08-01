@@ -64,12 +64,12 @@ export function Header() {
               trackEvent("click_header_cta");
               trackEvent("whatsapp_conversion", { location: "header" });
             }}
-            whileHover={{ y: -2, boxShadow: "0 18px 40px -12px rgba(216,36,47,0.55)" }}
+            whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 320, damping: 22 }}
-            className="hidden sm:inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-brand"
+            className="btn-tri hidden text-[13px] sm:inline-grid"
           >
-            Solicitar diagnóstico
+            <span className="inline-flex items-center gap-2">Solicitar diagnóstico</span>
             <ArrowRight className="h-4 w-4" />
           </motion.a>
           <button
@@ -110,9 +110,9 @@ export function Header() {
                   trackEvent("whatsapp_conversion", { location: "header_mobile" });
                   setOpen(false);
                 }}
-                className="sm:hidden mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground"
+                className="btn-tri mt-2 w-full text-[13px] sm:hidden"
               >
-                Solicitar diagnóstico
+                <span className="inline-flex items-center gap-2">Solicitar diagnóstico</span>
               </a>
             </div>
           </motion.div>

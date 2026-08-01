@@ -399,6 +399,13 @@ export function LaserFlow({
     };
     window.addEventListener("pointermove", onMove, { passive: true });
 
+    // Sem isto o rect só era medido no resize: bastava rolar a página para o
+    // ponteiro ser convertido com um topo antigo e o feixe inclinar errado.
+    const onScroll = () => {
+      rect = canvas.getBoundingClientRect();
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
     let raf = 0;
     const animar = () => {
       raf = requestAnimationFrame(animar);
@@ -431,6 +438,7 @@ export function LaserFlow({
       io.disconnect();
       document.removeEventListener("visibilitychange", onVis);
       window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("scroll", onScroll);
       geometry.dispose();
       material.dispose();
       renderer.dispose();

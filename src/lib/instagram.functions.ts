@@ -31,11 +31,14 @@ export type InstagramFeedResult = {
   error?: string;
 };
 
-/* Cache no servidor. Sem ele cada visitante novo dispara uma chamada à API —
-   no caminho oficial o limite é de 200 por hora e um dia movimentado estoura.
+/* Cache no servidor. Sem ele cada visitante novo dispara uma chamada à API.
+   Três horas não é exagero: o plano grátis do Behold dá 1.200 requisições por
+   mês, e a 15 minutos daria ~2.900 — estouraria e o feed sumiria no fim do
+   mês. A 3h são ~240 por instância, com folga de sobra. A pauta publica dia
+   sim, dia não, então o atraso máximo é irrelevante.
    Erro fica cacheado por pouco tempo, só para não martelar a origem quando a
    credencial vence. */
-const TTL_OK = 15 * 60 * 1000;
+const TTL_OK = 3 * 60 * 60 * 1000;
 const TTL_ERRO = 60 * 1000;
 let cache: { em: number; ttl: number; dados: InstagramFeedResult } | null = null;
 

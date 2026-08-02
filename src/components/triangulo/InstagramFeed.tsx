@@ -47,8 +47,14 @@ export function InstagramFeed() {
         </motion.div>
 
         {posts.length > 0 ? (
-          /* 5 colunas × 3 linhas, como na referência. */
-          <div className="mt-10 grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-3 lg:grid-cols-5">
+          /* Até 5 colunas, como na referência, mas a largura é limitada pela
+             quantidade de posts: com o perfil recém-criado, uma grade fixa de
+             5 colunas deixaria um quadradinho perdido no canto. O auto-fit
+             cuida do responsivo sem media query. */
+          <div
+            className="mx-auto mt-10 grid w-full gap-2 [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))] sm:gap-3"
+            style={{ maxWidth: `${Math.min(posts.length, 5) * 236}px` }}
+          >
             {posts.slice(0, 15).map((post, i) => (
               <motion.a
                 key={post.id}

@@ -1,21 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
-import { useServerFn } from "@tanstack/react-start";
 import { motion } from "framer-motion";
 import { Instagram, ArrowUpRight, Play, Copy } from "lucide-react";
-import { getInstagramFeed } from "@/lib/instagram.functions";
+import type { InstagramFeedResult } from "@/lib/instagram.functions";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/site";
 import { trackEvent } from "@/lib/analytics";
 
-export function InstagramFeed() {
-  const fetchFeed = useServerFn(getInstagramFeed);
-  const { data } = useQuery({
-    queryKey: ["instagram-feed"],
-    queryFn: () => fetchFeed(),
-    staleTime: 1000 * 60 * 30,
-    retry: 1,
-  });
-
-  const posts = data?.posts ?? [];
+/** Os posts vêm do loader da rota. Ver o comentário em routes/index.tsx: a
+ *  versão anterior buscava por RPC no cliente e em produção a chamada nunca
+ *  saía do navegador. */
+export function InstagramFeed({ feed }: { feed?: InstagramFeedResult }) {
+  const posts = feed?.posts ?? [];
 
   return (
     <section className="bg-[#0b0b0d]">

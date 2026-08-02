@@ -13,7 +13,7 @@ import {
 } from "@/components/triangulo/Home";
 import { CookieBanner } from "@/components/triangulo/CookieBanner";
 import { InstagramFeed } from "@/components/triangulo/InstagramFeed";
-import { getInstagramFeed } from "@/lib/instagram.functions";
+import { buscarFeedInstagram } from "@/lib/instagram";
 import { SITE } from "@/lib/site";
 
 const TITLE = `${SITE.name} | Tecnologia e Gestão em ${SITE.city}/${SITE.region}`;
@@ -67,11 +67,9 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
-  /* O feed vem pelo loader, e não por useQuery no cliente: em produção a
-     chamada por RPC não saía do navegador (zero requisições a /_serverFn) e a
-     seção ficava eternamente no fallback. Pelo loader os posts já chegam
-     dentro do HTML — some a ida e volta e o feed aparece na primeira pintura. */
-  loader: () => getInstagramFeed(),
+  /* O feed vem pelo loader: os posts chegam dentro do HTML, sem ida e volta.
+     Ver o comentário em lib/instagram.ts sobre por que não é server function. */
+  loader: () => buscarFeedInstagram(),
   component: Index,
 });
 

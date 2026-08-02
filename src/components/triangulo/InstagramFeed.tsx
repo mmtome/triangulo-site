@@ -1,12 +1,10 @@
 import { motion } from "framer-motion";
 import { Instagram, ArrowUpRight, Play, Copy } from "lucide-react";
-import type { InstagramFeedResult } from "@/lib/instagram.functions";
+import type { InstagramFeedResult } from "@/lib/instagram";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/site";
 import { trackEvent } from "@/lib/analytics";
 
-/** Os posts vêm do loader da rota. Ver o comentário em routes/index.tsx: a
- *  versão anterior buscava por RPC no cliente e em produção a chamada nunca
- *  saía do navegador. */
+/** Os posts vêm do loader da rota. */
 export function InstagramFeed({ feed }: { feed?: InstagramFeedResult }) {
   const posts = feed?.posts ?? [];
 

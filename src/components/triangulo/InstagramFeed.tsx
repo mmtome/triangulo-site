@@ -65,7 +65,11 @@ export function InstagramFeed() {
               >
                 <img
                   src={post.mediaUrl}
-                  alt={post.caption?.slice(0, 110) || `Publicação de ${INSTAGRAM_HANDLE} no Instagram`}
+                  alt={
+                    post.altText ||
+                    post.caption?.slice(0, 110) ||
+                    `Publicação de ${INSTAGRAM_HANDLE} no Instagram`
+                  }
                   loading="lazy"
                   decoding="async"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

@@ -59,7 +59,7 @@ export const ARTICLES: Article[] = [
     category: "Gestão",
     readMinutes: 9,
     publishedAt: "2026-06-22",
-    author: "Triângulo Solucions",
+    author: "Triângulo Solutions",
     keywords: [
       "tecnologia em Uberaba",
       "gestão empresarial Triângulo Mineiro",
@@ -185,7 +185,7 @@ export const ARTICLES: Article[] = [
     readMinutes: 7,
     publishedAt: "2026-06-10",
     updatedAt: "2026-06-22",
-    author: "Triângulo Solucions",
+    author: "Triângulo Solutions",
     keywords: ["sistema personalizado Uberaba", "software sob medida", "ERP vs sob medida"],
     blocks: [
       {
@@ -293,7 +293,7 @@ export const ARTICLES: Article[] = [
     readMinutes: 6,
     publishedAt: "2026-06-05",
     updatedAt: "2026-06-22",
-    author: "Triângulo Solucions",
+    author: "Triângulo Solutions",
     keywords: ["planilhas vs sistema", "migração de planilha para sistema", "gestão empresarial"],
     blocks: [
       {
@@ -394,7 +394,7 @@ export const ARTICLES: Article[] = [
     readMinutes: 7,
     publishedAt: "2026-05-28",
     updatedAt: "2026-06-22",
-    author: "Triângulo Solucions",
+    author: "Triângulo Solutions",
     keywords: ["automação de processos Uberaba", "automação PME", "produtividade empresarial"],
     blocks: [
       {
@@ -489,7 +489,7 @@ export const ARTICLES: Article[] = [
     readMinutes: 7,
     publishedAt: "2026-05-20",
     updatedAt: "2026-06-22",
-    author: "Triângulo Solucions",
+    author: "Triângulo Solutions",
     keywords: ["dashboards de gestão", "indicadores empresariais", "BI para PME"],
     blocks: [
       {
@@ -589,7 +589,7 @@ export const ARTICLES: Article[] = [
     readMinutes: 7,
     publishedAt: "2026-05-12",
     updatedAt: "2026-06-22",
-    author: "Triângulo Solucions",
+    author: "Triângulo Solutions",
     keywords: ["MicroSaaS", "produto digital", "validação de MVP"],
     blocks: [
       {
@@ -688,7 +688,7 @@ export const ARTICLES: Article[] = [
     readMinutes: 7,
     publishedAt: "2026-05-04",
     updatedAt: "2026-06-22",
-    author: "Triângulo Solucions",
+    author: "Triângulo Solutions",
     keywords: ["ERP", "sistema sob medida", "software de gestão"],
     blocks: [
       {
@@ -803,7 +803,7 @@ export const ARTICLES: Article[] = [
     category: "Sistemas sob medida",
     readMinutes: 9,
     publishedAt: "2026-06-22",
-    author: "Triângulo Solucions",
+    author: "Triângulo Solutions",
     keywords: [
       "custo de sistema sob medida",
       "preço sistema personalizado Uberaba",
@@ -811,7 +811,7 @@ export const ARTICLES: Article[] = [
       "MVP empresarial",
     ],
     whatsappMessage:
-      "Olá, vim pelo site da Triângulo Solucions e li o artigo sobre custo de sistema sob medida. Gostaria de entender o que faria sentido para minha empresa.",
+      "Olá, vim pelo site da Triângulo Solutions e li o artigo sobre custo de sistema sob medida. Gostaria de entender o que faria sentido para minha empresa.",
     blocks: [
       {
         type: "p",
@@ -951,7 +951,7 @@ export const ARTICLES: Article[] = [
     category: "Processos",
     readMinutes: 8,
     publishedAt: "2026-06-22",
-    author: "Triângulo Solucions",
+    author: "Triângulo Solutions",
     keywords: [
       "fluxograma de processos",
       "mapeamento de processos",
@@ -960,7 +960,7 @@ export const ARTICLES: Article[] = [
       "BPMN",
     ],
     whatsappMessage:
-      "Olá, vim pelo site da Triângulo Solucions e li o artigo sobre fluxograma de processos. Gostaria de entender como mapear e melhorar um processo da minha empresa.",
+      "Olá, vim pelo site da Triângulo Solutions e li o artigo sobre fluxograma de processos. Gostaria de entender como mapear e melhorar um processo da minha empresa.",
     blocks: [
       {
         type: "p",
@@ -1102,7 +1102,7 @@ export const ARTICLES: Article[] = [
     category: "Automação",
     readMinutes: 8,
     publishedAt: "2026-06-22",
-    author: "Triângulo Solucions",
+    author: "Triângulo Solutions",
     keywords: [
       "automação para pequenas empresas",
       "automação de processos",
@@ -1110,7 +1110,7 @@ export const ARTICLES: Article[] = [
       "RPA",
     ],
     whatsappMessage:
-      "Olá, vim pelo site da Triângulo Solucions e li o artigo sobre automação para pequenas empresas. Gostaria de identificar oportunidades de automação na minha operação.",
+      "Olá, vim pelo site da Triângulo Solutions e li o artigo sobre automação para pequenas empresas. Gostaria de identificar oportunidades de automação na minha operação.",
     blocks: [
       {
         type: "p",

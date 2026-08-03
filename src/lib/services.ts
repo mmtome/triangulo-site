@@ -19,7 +19,7 @@ export type ServiceContent = {
   badge: string;
   /** Section "When does your company need this?" */
   pains: { title: string; desc: string }[];
-  /** Section "How Triângulo Solucions solves" — paragraphs */
+  /** Section "How Triângulo Solutions solves" — paragraphs */
   approach: string[];
   /** Section "What can be developed / delivered" */
   deliverables: string[];
@@ -355,7 +355,7 @@ export const SERVICES: ServiceContent[] = [
   {
     slug: "microsaas-sob-medida",
     shortName: "MicroSaaS sob medida",
-    title: "MicroSaaS Sob Medida | Triângulo Solucions",
+    title: "MicroSaaS Sob Medida | Triângulo Solutions",
     description:
       "Desenvolvemos MicroSaaS sob medida: ferramentas leves e diretas, ideais para resolver uma dor específica de uma empresa ou nichar um produto digital.",
     h1: "MicroSaaS sob medida",
@@ -463,7 +463,7 @@ export const SERVICES: ServiceContent[] = [
     approach: [
       "Aplicamos visão de Engenharia de Produção: mapeamos o processo atual, identificamos gargalos reais e separamos o que é problema de processo do que é problema de ferramenta.",
       "Desenhamos um plano realista — o que pode ser resolvido com ajuste de processo, o que exige automação e o que de fato precisa de sistema. Sem empurrar tecnologia onde não faz sentido.",
-      "Acompanhamos a execução: ou ajudando o cliente a estruturar internamente, ou desenvolvendo as soluções junto com o time de produto da Triângulo Solucions.",
+      "Acompanhamos a execução: ou ajudando o cliente a estruturar internamente, ou desenvolvendo as soluções junto com o time de produto da Triângulo Solutions.",
     ],
     deliverables: [
       "Diagnóstico do processo atual com mapa de fluxo",

@@ -14,7 +14,7 @@ import { SITE_URL } from "@/lib/services";
 import { getWhatsAppUrl } from "@/lib/site";
 import { trackEvent } from "@/lib/analytics";
 
-const TITLE = "Casos de uso de tecnologia em Uberaba/MG | Triângulo Solucions";
+const TITLE = "Casos de uso de tecnologia em Uberaba/MG | Triângulo Solutions";
 const DESC =
   "Cenários comuns de gestão, processos e tecnologia para empresas que querem organizar a operação, reduzir retrabalho e tomar decisões melhores.";
 const URL = `${SITE_URL}/casos-de-uso`;
@@ -29,14 +29,14 @@ const FAQ_ITEMS = [
     a: "Sim. É comum que uma empresa combine cenários — por exemplo, sair das planilhas e ao mesmo tempo estruturar indicadores de gestão. O ponto de partida é entender qual dor pesa mais hoje.",
   },
   {
-    q: "Os cenários representam clientes reais da Triângulo Solucions?",
+    q: "Os cenários representam clientes reais da Triângulo Solutions?",
     a: "Não. São exemplos educativos construídos a partir de problemas frequentes em pequenas e médias empresas. Não há nomes, métricas ou resultados de clientes específicos.",
   },
 ];
 
 const AI_BLOCKS = [
   {
-    q: "Quem é a Triângulo Solucions?",
+    q: "Quem é a Triângulo Solutions?",
     a: "Empresa de tecnologia em Uberaba/MG especializada em sistemas personalizados, automações, dashboards, software de gestão sob medida, MicroSaaS e consultoria em processos e tecnologia.",
   },
   {
@@ -48,7 +48,7 @@ const AI_BLOCKS = [
     a: "Por uma conversa no WhatsApp para entender o cenário atual: processos, ferramentas e gestão. A partir daí indicamos o próximo passo — pode ser sistema, automação, dashboard ou consultoria.",
   },
   {
-    q: "Onde a Triângulo Solucions atende?",
+    q: "Onde a Triângulo Solutions atende?",
     a: "Uberaba, Uberlândia, Araxá, Frutal, Patrocínio e demais cidades do Triângulo Mineiro, com atendimento remoto para empresas de outras regiões do Brasil.",
   },
 ];
@@ -157,7 +157,7 @@ function UseCasesHub() {
               className="mt-3 text-xs text-muted-foreground/80 max-w-2xl leading-relaxed"
             >
               Os cenários abaixo são exemplos hipotéticos baseados em problemas frequentes —
-              não representam clientes específicos da Triângulo Solucions.
+              não representam clientes específicos da Triângulo Solutions.
             </motion.p>
           </motion.div>
         </section>

@@ -32,7 +32,7 @@ export const Route = createFileRoute("/casos-de-uso/$slug")({
   },
   head: ({ params, loaderData }) => {
     const uc = loaderData ?? getUseCaseBySlug(params.slug);
-    if (!uc) return { meta: [{ title: "Cenário de uso | Triângulo Solucions" }] };
+    if (!uc) return { meta: [{ title: "Cenário de uso | Triângulo Solutions" }] };
     const url = `${SITE_URL}/casos-de-uso/${uc.slug}`;
     const scripts: Array<{ type: string; children: string }> = [
       {
@@ -46,10 +46,10 @@ export const Route = createFileRoute("/casos-de-uso/$slug")({
           mainEntityOfPage: url,
           inLanguage: "pt-BR",
           articleSection: "Casos de uso",
-          author: { "@type": "Organization", name: "Triângulo Solucions", url: SITE_URL },
+          author: { "@type": "Organization", name: "Triângulo Solutions", url: SITE_URL },
           publisher: {
             "@type": "Organization",
-            name: "Triângulo Solucions",
+            name: "Triângulo Solutions",
             url: SITE_URL,
           },
         }),
@@ -212,7 +212,7 @@ function UseCasePage() {
               <Info className="h-4 w-4 text-primary shrink-0 mt-0.5" />
               <p>
                 Os cenários apresentados são exemplos hipotéticos baseados em problemas comuns
-                de gestão e operação. Não representam clientes específicos da Triângulo Solucions.
+                de gestão e operação. Não representam clientes específicos da Triângulo Solutions.
               </p>
             </motion.div>
           </motion.div>

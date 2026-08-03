@@ -1,8 +1,8 @@
 // Centralized site constants. Edit values here to update the whole LP.
 
 export const SITE = {
-  name: "Triângulo Solucions",
-  shortName: "Triângulo Solucions",
+  name: "Triângulo Solutions",
+  shortName: "Triângulo Solutions",
   city: "Uberaba",
   region: "MG",
   area: "Triângulo Mineiro",
@@ -13,13 +13,13 @@ export const SITE = {
 // WhatsApp — número oficial (DDI+DDD+número, sem espaços ou símbolos).
 export const WHATSAPP_NUMBER = "5516993882232";
 export const WHATSAPP_MESSAGE =
-  "Olá, vim pelo site da Triângulo Solucions e gostaria de entender como vocês podem ajudar minha empresa com tecnologia, processos e gestão.";
+  "Olá, vim pelo site da Triângulo Solutions e gostaria de entender como vocês podem ajudar minha empresa com tecnologia, processos e gestão.";
 
 export const getWhatsAppUrl = () =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 export const DIAGNOSTIC_WHATSAPP_MESSAGE =
-  "Olá, vim pelo site da Triângulo Solucions e gostaria de agendar um diagnóstico para entender como melhorar processos, gestão e tecnologia na minha empresa.";
+  "Olá, vim pelo site da Triângulo Solutions e gostaria de agendar um diagnóstico para entender como melhorar processos, gestão e tecnologia na minha empresa.";
 
 export const getDiagnosticWhatsAppUrl = () =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DIAGNOSTIC_WHATSAPP_MESSAGE)}`;

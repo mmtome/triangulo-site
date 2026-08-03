@@ -18,9 +18,9 @@ import { SITE, getWhatsAppUrl, WHATSAPP_NUMBER } from "@/lib/site";
 import { SITE_URL } from "@/lib/services";
 import { trackEvent } from "@/lib/analytics";
 
-const TITLE = `Contato | Triângulo Solucions em Uberaba/MG`;
+const TITLE = `Contato | Triângulo Solutions em Uberaba/MG`;
 const DESC =
-  "Fale com a Triângulo Solucions pelo WhatsApp. Empresa de tecnologia em Uberaba/MG com atendimento sob agendamento para todo o Triângulo Mineiro.";
+  "Fale com a Triângulo Solutions pelo WhatsApp. Empresa de tecnologia em Uberaba/MG com atendimento sob agendamento para todo o Triângulo Mineiro.";
 const URL = `${SITE_URL}/contato`;
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -163,7 +163,7 @@ function ContactPage() {
               variants={item}
               className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] max-w-3xl"
             >
-              Fale com a Triângulo Solucions pelo WhatsApp
+              Fale com a Triângulo Solutions pelo WhatsApp
             </motion.h1>
             <motion.p
               variants={item}

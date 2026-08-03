@@ -45,7 +45,7 @@ function TituloDigitado({
 }
 
 /* ============================================================================
-   Home da Triângulo Solucions.
+   Home da Triângulo Solutions.
 
    Estrutura: "ref site 2" (hero com brilho → prova → blocos de valor →
    fechamento) · Hero 3D: "ref site 3" (objetos flutuando em profundidade).

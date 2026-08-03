@@ -36,7 +36,7 @@ const URL = `${SITE_URL}/solucoes`;
 
 const FAQ_ITEMS = [
   {
-    q: "Quais soluções a Triângulo Solucions oferece?",
+    q: "Quais soluções a Triângulo Solutions oferece?",
     a: "Desenvolvemos sistemas personalizados, automações de processos, dashboards de gestão, software de gestão sob medida, MicroSaaS e consultoria em processos e tecnologia para empresas em Uberaba/MG e região.",
   },
   {
@@ -75,7 +75,7 @@ export const Route = createFileRoute("/solucoes")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Soluções da Triângulo Solucions",
+          name: "Soluções da Triângulo Solutions",
           description: DESC,
           url: URL,
         }),

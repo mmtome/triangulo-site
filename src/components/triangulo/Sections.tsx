@@ -235,7 +235,7 @@ export function ProblemCards() {
             className="mt-5 text-base sm:text-lg text-muted-foreground"
           >
             Muitos negócios crescem, mas continuam operando com ferramentas improvisadas.
-            A Triangulo Solucions cria tecnologia para organizar esse crescimento.
+            A Triangulo Solutions cria tecnologia para organizar esse crescimento.
           </motion.p>
         </div>
         <motion.div
@@ -645,7 +645,7 @@ export function RegionalSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mt-5 text-base sm:text-lg text-muted-foreground"
           >
-            A Triangulo Solucions nasce no Triângulo Mineiro com o propósito de aproximar empresas
+            A Triangulo Solutions nasce no Triângulo Mineiro com o propósito de aproximar empresas
             locais de soluções digitais inteligentes, acessíveis e alinhadas à realidade de cada
             operação.
           </motion.p>
@@ -924,7 +924,7 @@ export function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-          <div>© {new Date().getFullYear()} Triângulo Solucions. Todos os direitos reservados. · <a href="/politica-de-privacidade" className="hover:text-foreground transition-colors">Política de Privacidade</a></div>
+          <div>© {new Date().getFullYear()} Triângulo Solutions. Todos os direitos reservados. · <a href="/politica-de-privacidade" className="hover:text-foreground transition-colors">Política de Privacidade</a></div>
           <div>Feito em Uberaba/MG</div>
         </div>
       </div>

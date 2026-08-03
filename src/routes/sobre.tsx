@@ -20,9 +20,9 @@ import { SITE_URL } from "@/lib/services";
 import { getWhatsAppUrl } from "@/lib/site";
 import { trackEvent } from "@/lib/analytics";
 
-const TITLE = `Sobre a Triângulo Solucions | Tecnologia em Uberaba/MG`;
+const TITLE = `Sobre a Triângulo Solutions | Tecnologia em Uberaba/MG`;
 const DESC =
-  "Conheça a Triângulo Solucions, empresa de tecnologia em Uberaba/MG que une software, processos e gestão.";
+  "Conheça a Triângulo Solutions, empresa de tecnologia em Uberaba/MG que une software, processos e gestão.";
 const URL = `${SITE_URL}/sobre`;
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -131,7 +131,7 @@ function AboutPage() {
               variants={item}
               className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed"
             >
-              A Triângulo Solucions foi criada por estudantes de Engenharia de Produção em
+              A Triângulo Solutions foi criada por estudantes de Engenharia de Produção em
               Uberaba/MG, unindo visão de processos, tecnologia e gestão para desenvolver soluções
               digitais aplicadas à realidade das empresas.
             </motion.p>
@@ -178,7 +178,7 @@ function AboutPage() {
               </motion.h2>
               <div className="mt-5 space-y-4 text-base text-muted-foreground leading-relaxed">
                 <motion.p variants={item}>
-                  A Triângulo Solucions nasceu em Uberaba/MG, no coração do Triângulo Mineiro, a
+                  A Triângulo Solutions nasceu em Uberaba/MG, no coração do Triângulo Mineiro, a
                   partir da percepção de que muitas empresas da região cresciam mais rápido do que
                   seus processos conseguiam acompanhar. Planilhas se multiplicavam, sistemas
                   prontos não cabiam na operação real e decisões importantes acabavam sendo

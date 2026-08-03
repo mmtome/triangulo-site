@@ -35,7 +35,7 @@ export const Route = createFileRoute("/insights/$slug")({
     const description = a.seoDescription ?? a.description;
     return {
       meta: [
-        { title: `${title} | Insights Triângulo Solucions` },
+        { title: `${title} | Insights Triângulo Solutions` },
         { name: "description", content: description },
         { name: "keywords", content: a.keywords.join(", ") },
         { name: "author", content: a.author },
@@ -206,7 +206,7 @@ function ArticlePage() {
 
   const whatsappMessage =
     article.whatsappMessage ??
-    `Olá, vim pelo site da Triângulo Solucions e li o artigo "${article.title}". Gostaria de entender como esse tema se aplica à minha empresa.`;
+    `Olá, vim pelo site da Triângulo Solutions e li o artigo "${article.title}". Gostaria de entender como esse tema se aplica à minha empresa.`;
 
 
   const stagger = {
@@ -400,7 +400,7 @@ function ArticlePage() {
                     Quer entender como isso se aplica à sua empresa?
                   </h3>
                   <p className="mt-3 text-white/70 max-w-2xl leading-relaxed">
-                    A Triângulo Solucions une Engenharia de Produção e desenvolvimento
+                    A Triângulo Solutions une Engenharia de Produção e desenvolvimento
                     de software para estruturar soluções coerentes com a operação de
                     cada negócio.
                   </p>

@@ -3,7 +3,7 @@
 // Texto curto, factual e específico — sem floreio.
 //
 // Schema: usamos FAQPage (não QAPage), pois são FAQs institucionais
-// mantidas pela Triângulo Solucions, não perguntas de usuários em fórum.
+// mantidas pela Triângulo Solutions, não perguntas de usuários em fórum.
 
 import { Sparkles } from "lucide-react";
 

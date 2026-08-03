@@ -22,7 +22,7 @@ export function InstagramFeed({ feed }: { feed?: InstagramFeedResult }) {
             Acompanhe
           </p>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold">
-            Siga a Triângulo Solucions no Instagram
+            Siga a Triângulo Solutions no Instagram
           </h2>
           <a
             href={INSTAGRAM_URL}

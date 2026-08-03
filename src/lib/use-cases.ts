@@ -118,7 +118,7 @@ export const USE_CASES: UseCase[] = [
     nextStep:
       "Antes de desenvolver qualquer sistema, o ideal é mapear o fluxo atual, entender onde a informação se perde e definir qual melhoria gera mais impacto com menor complexidade. A partir daí fica claro se o caminho é um sistema sob medida, uma automação pontual ou apenas a reorganização do processo.",
     whatsappMessage:
-      "Olá, vim pelo site da Triângulo Solucions e me identifiquei com o cenário de operação rodando em planilhas. Gostaria de entender como vocês poderiam ajudar minha empresa.",
+      "Olá, vim pelo site da Triângulo Solutions e me identifiquei com o cenário de operação rodando em planilhas. Gostaria de entender como vocês poderiam ajudar minha empresa.",
     relatedServices: [
       "sistemas-personalizados-uberaba",
       "software-gestao-uberaba",
@@ -207,7 +207,7 @@ export const USE_CASES: UseCase[] = [
     nextStep:
       "O melhor próximo passo é mapear o fluxo atual de aprovação, identificar os 2 ou 3 pontos onde mais se perde tempo ou rastreabilidade, e tratar esses pontos primeiro — com padronização e, quando fizer sentido, com automação.",
     whatsappMessage:
-      "Olá, vim pelo site da Triângulo Solucions e me identifiquei com o cenário de aprovações manuais e retrabalho. Gostaria de entender como vocês poderiam ajudar minha empresa.",
+      "Olá, vim pelo site da Triângulo Solutions e me identifiquei com o cenário de aprovações manuais e retrabalho. Gostaria de entender como vocês poderiam ajudar minha empresa.",
     relatedServices: [
       "automacao-de-processos-uberaba",
       "sistemas-personalizados-uberaba",
@@ -286,7 +286,7 @@ export const USE_CASES: UseCase[] = [
     nextStep:
       "Antes de montar dashboard, vale listar as 5 a 10 perguntas que a liderança precisa responder toda semana ou todo mês. A partir dessas perguntas é que se definem os indicadores e, só depois, a ferramenta que vai mostrá-los.",
     whatsappMessage:
-      "Olá, vim pelo site da Triângulo Solucions e me identifiquei com o cenário de gestão sem indicadores claros. Gostaria de entender como vocês poderiam ajudar minha empresa.",
+      "Olá, vim pelo site da Triângulo Solutions e me identifiquei com o cenário de gestão sem indicadores claros. Gostaria de entender como vocês poderiam ajudar minha empresa.",
     relatedServices: [
       "dashboards-indicadores-uberaba",
       "software-gestao-uberaba",
@@ -365,7 +365,7 @@ export const USE_CASES: UseCase[] = [
     nextStep:
       "O ponto de partida é uma análise honesta do que o ERP atual faz, do que é resolvido fora dele e do que pesa no dia a dia da equipe. Com esse retrato, fica claro se o caminho é trocar de ERP, integrar melhor ou desenvolver módulos sob medida para o que diferencia o negócio.",
     whatsappMessage:
-      "Olá, vim pelo site da Triângulo Solucions e me identifiquei com o cenário de ERP genérico que não se adapta. Gostaria de entender como vocês poderiam ajudar minha empresa.",
+      "Olá, vim pelo site da Triângulo Solutions e me identifiquei com o cenário de ERP genérico que não se adapta. Gostaria de entender como vocês poderiam ajudar minha empresa.",
     relatedServices: [
       "software-gestao-uberaba",
       "sistemas-personalizados-uberaba",
@@ -444,7 +444,7 @@ export const USE_CASES: UseCase[] = [
     nextStep:
       "O próximo passo é transformar a ideia em uma hipótese verificável: qual problema, para quem, e qual o menor produto que já testa essa hipótese. Com isso desenhado, a construção do MVP fica focada e o investimento se concentra no que comprova valor.",
     whatsappMessage:
-      "Olá, vim pelo site da Triângulo Solucions e me identifiquei com o cenário de validar uma ideia de produto digital. Gostaria de entender como vocês poderiam ajudar minha empresa.",
+      "Olá, vim pelo site da Triângulo Solutions e me identifiquei com o cenário de validar uma ideia de produto digital. Gostaria de entender como vocês poderiam ajudar minha empresa.",
     relatedServices: [
       "microsaas-sob-medida",
       "sistemas-personalizados-uberaba",
@@ -523,7 +523,7 @@ export const USE_CASES: UseCase[] = [
     nextStep:
       "O próximo passo é um diagnóstico estruturado de processos, tecnologia e gestão em conjunto. Com esse retrato, fica claro onde a tecnologia muda o jogo do negócio agora e onde pode esperar — e o investimento passa a ser feito com critério.",
     whatsappMessage:
-      "Olá, vim pelo site da Triângulo Solucions e me identifiquei com o cenário de tecnologia sem direção clara. Gostaria de entender como vocês poderiam ajudar minha empresa.",
+      "Olá, vim pelo site da Triângulo Solutions e me identifiquei com o cenário de tecnologia sem direção clara. Gostaria de entender como vocês poderiam ajudar minha empresa.",
     relatedServices: [
       "consultoria-processos-tecnologia",
       "automacao-de-processos-uberaba",

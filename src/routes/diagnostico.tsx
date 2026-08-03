@@ -155,7 +155,7 @@ const FAQ_ITEMS = [
 
 const AI_BLOCKS = [
   {
-    q: "O que é o diagnóstico de tecnologia da Triângulo Solucions?",
+    q: "O que é o diagnóstico de tecnologia da Triângulo Solutions?",
     a: "Conversa estruturada e sem custo para mapear processos, ferramentas e gestão da empresa. Tem como saída um caminho recomendado, com prioridades claras.",
   },
   {
@@ -164,7 +164,7 @@ const AI_BLOCKS = [
   },
   {
     q: "O que a empresa recebe ao final?",
-    a: "Uma leitura direta do cenário, indicação dos pontos mais críticos e proposta de próximos passos — que podem ou não envolver a Triângulo Solucions.",
+    a: "Uma leitura direta do cenário, indicação dos pontos mais críticos e proposta de próximos passos — que podem ou não envolver a Triângulo Solutions.",
   },
 ];
 
@@ -193,7 +193,7 @@ export const Route = createFileRoute("/diagnostico")({
           name: "Diagnóstico de tecnologia",
           description: DESC,
           serviceType: "Consultoria diagnóstica",
-          provider: { "@type": "Organization", name: "Triângulo Solucions" },
+          provider: { "@type": "Organization", name: "Triângulo Solutions" },
           areaServed: ["Uberaba", "Triângulo Mineiro", "Minas Gerais"],
           offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
           url: URL,
@@ -624,7 +624,7 @@ function DiagnosticoPage() {
                     Antes de vender software, entendemos o problema.
                   </h2>
                   <p className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
-                    A Triângulo Solucions não parte do princípio de que toda empresa precisa de um
+                    A Triângulo Solutions não parte do princípio de que toda empresa precisa de um
                     sistema novo. Nosso foco é entender se existe uma dor operacional real, qual é
                     a causa e qual solução tem melhor custo-benefício para o momento da empresa.
                   </p>

@@ -40,7 +40,7 @@ export const Route = createFileRoute("/insights/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Blog",
-          name: "Insights Triângulo Solucions",
+          name: "Insights Triângulo Solutions",
           description: DESC,
           url: URL,
           blogPost: ARTICLES.map((a) => ({
@@ -249,7 +249,7 @@ function InsightsHubPage() {
                     Quer aplicar algum desses conceitos na sua empresa?
                   </h2>
                   <p className="mt-3 text-white/70 leading-relaxed">
-                    Converse com a Triângulo Solucions e entenda qual próximo passo
+                    Converse com a Triângulo Solutions e entenda qual próximo passo
                     faz sentido para seus processos, dados e tecnologia.
                   </p>
                 </div>

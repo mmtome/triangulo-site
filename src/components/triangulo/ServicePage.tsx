@@ -150,7 +150,7 @@ export function ServicePage({ service }: { service: ServiceContent }) {
             className="mx-auto max-w-3xl px-5 sm:px-8"
           >
             <motion.div variants={item} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
-              <Sparkles className="h-3.5 w-3.5" /> Como a Triângulo Solucions resolve
+              <Sparkles className="h-3.5 w-3.5" /> Como a Triângulo Solutions resolve
             </motion.div>
             <motion.h2 variants={item} className="mt-3 text-2xl sm:text-3xl font-bold text-foreground">
               Da dor operacional ao resultado mensurável

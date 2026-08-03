@@ -13,7 +13,7 @@ export function Logo({ variant = "dark", className = "" }: LogoProps) {
     <a href="#inicio" className={`group flex items-center gap-2.5 ${className}`}>
       <motion.img
         src={LOGO_SRC}
-        alt="Triângulo Solucions"
+        alt="Triângulo Solutions"
         className="h-10 w-10 rounded-lg object-cover"
         width={40}
         height={40}
@@ -22,7 +22,7 @@ export function Logo({ variant = "dark", className = "" }: LogoProps) {
       />
       <div className={`leading-none ${textColor}`}>
         <div className="text-[11px] font-light tracking-wide opacity-80 italic">Triângulo</div>
-        <div className="text-lg font-bold tracking-tight">Solucions</div>
+        <div className="text-lg font-bold tracking-tight">Solutions</div>
       </div>
     </a>
   );
